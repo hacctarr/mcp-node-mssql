@@ -1,5 +1,20 @@
 # mcp-node-mssql
 
+Fork of [cwilby/mcp-node-mssql](https://github.com/cwilby/mcp-node-mssql) with added support for **Windows Authentication (NTLM)** via the `DB_DOMAIN` environment variable.
+
+## Windows Authentication (NTLM)
+
+To connect using Active Directory credentials, set `DB_DOMAIN` to your AD domain name. This enables NTLM authentication, which works on macOS and Linux (unlike `TRUSTED_CONNECTION` which requires Windows SSPI).
+
+```json
+{
+  "DB_DOMAIN": "YOURDOMAIN",
+  "DB_USERNAME": "your.username",
+  "DB_PASSWORD": "your-ad-password",
+  "TRUSTED_CONNECTION": "false"
+}
+```
+
 ## Usage
 
 ### Cursor
@@ -23,6 +38,7 @@ See the [official Cursor docs](https://docs.cursor.com/context/model-context-pro
         "DB_PORT": "1433",
         "DB_USERNAME": "<username>",
         "DB_PASSWORD": "<password>",
+        "DB_DOMAIN": "<domain (for Windows/NTLM auth)>",
         "DB_DATABASE": "<database>",
         "CONNECTION_TIMEOUT": 600000,
         "REQUEST_TIMEOUT": 300000
@@ -58,6 +74,7 @@ See the [official Windsurf docs](https://codeium.com/docs/windsurf/mcp) for more
         "DB_PORT": "1433",
         "DB_USERNAME": "<username>",
         "DB_PASSWORD": "<password>",
+        "DB_DOMAIN": "<domain (for Windows/NTLM auth)>",
         "DB_DATABASE": "<database>",
         "CONNECTION_TIMEOUT": 600000,
         "REQUEST_TIMEOUT": 300000
@@ -153,6 +170,7 @@ npm run build
         "DB_PORT": "1433",
         "DB_USERNAME": "<username>",
         "DB_PASSWORD": "<password>",
+        "DB_DOMAIN": "<domain (for Windows/NTLM auth)>",
         "DB_DATABASE": "<database>",
         "CONNECTION_TIMEOUT": 600000,
         "REQUEST_TIMEOUT": 300000

@@ -6,6 +6,7 @@ export async function connect(): Promise<mssql.ConnectionPool> {
 		port: Number(process.env.DB_PORT ?? 1433),
 		user: process.env.DB_USERNAME,
 		password: process.env.DB_PASSWORD,
+		domain: process.env.DB_DOMAIN,
 		database: process.env.DB_DATABASE,
 		connectionTimeout: Number(process.env.CONNECTION_TIMEOUT ?? 600000),
 		requestTimeout: Number(process.env.REQUEST_TIMEOUT ?? 300000),
